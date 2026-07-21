@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arsenal — Bold, Premium UI Resources</title>
+<meta name="description" content="150+ free or dirt-cheap resources for building bold, premium, three-dimensional interfaces: component libraries, scroll animation, shaders/WebGL, icons, app icon design, mockup videos, 3D models, color & typography tools, cursor effects, and illustration packs.">
+<meta name="theme-color" content="#0b0b0e">
+<meta property="og:title" content="The Arsenal — Bold, Premium UI Resources">
+<meta property="og:description" content="150+ free or dirt-cheap resources for interfaces that feel bold, premium, and three-dimensional — searchable, categorized, all in one place.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Arsenal — Bold, Premium UI Resources">
+<meta name="twitter:description" content="150+ free or dirt-cheap resources for interfaces that feel bold, premium, and three-dimensional.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%83%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --bg-elevated: #ffffff;
+    --card: #ffffff;
+    --border: rgba(20,15,10,0.09);
+    --text: #1a1720;
+    --text-dim: #5c5566;
+    --text-faint: #948da0;
+    --accent: #e14700;
+    --accent-soft: rgba(225,71,0,0.08);
+    --accent-2: #7d5a9e;
+    --free: #1f8a4c;
+    --free-soft: rgba(31,138,76,0.10);
+    --freemium: #a4650a;
+    --freemium-soft: rgba(164,101,10,0.10);
+    --paid: #7d5a9e;
+    --paid-soft: rgba(125,90,158,0.10);
+    --shadow: 0 1px 2px rgba(20,15,10,.05), 0 8px 24px -12px rgba(20,15,10,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0b0e;
+      --bg-elevated: #151319;
+      --card: #1a181f;
+      --border: rgba(255,255,255,.09);
+      --text: #f5f3f0;
+      --text-dim: #a39eae;
+      --text-faint: #6f6a7a;
+      --accent: #ff5b1f;
+      --accent-soft: rgba(255,91,31,.16);
+      --accent-2: #d0bce1;
+      --free: #6fd68a;
+      --free-soft: rgba(111,214,138,.12);
+      --freemium: #ffb648;
+      --freemium-soft: rgba(255,182,72,.12);
+      --paid: #d0bce1;
+      --paid-soft: rgba(208,188,225,.12);
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0b0e; --bg-elevated: #151319; --card: #1a181f; --border: rgba(255,255,255,.09);
+    --text: #f5f3f0; --text-dim: #a39eae; --text-faint: #6f6a7a;
+    --accent: #ff5b1f; --accent-soft: rgba(255,91,31,.16); --accent-2: #d0bce1;
+    --free: #6fd68a; --free-soft: rgba(111,214,138,.12);
+    --freemium: #ffb648; --freemium-soft: rgba(255,182,72,.12);
+    --paid: #d0bce1; --paid-soft: rgba(208,188,225,.12);
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f5; --bg-elevated: #ffffff; --card: #ffffff; --border: rgba(20,15,10,0.09);
+    --text: #1a1720; --text-dim: #5c5566; --text-faint: #948da0;
+    --accent: #e14700; --accent-soft: rgba(225,71,0,0.08); --accent-2: #7d5a9e;
+    --free: #1f8a4c; --free-soft: rgba(31,138,76,0.10);
+    --freemium: #a4650a; --freemium-soft: rgba(164,101,10,0.10);
+    --paid: #7d5a9e; --paid-soft: rgba(125,90,158,0.10);
+    --shadow: 0 1px 2px rgba(20,15,10,.05), 0 8px 24px -12px rgba(20,15,10,.12);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--accent-soft); }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3rem) 2.5rem;
+    border-bottom: 1px solid var(--border);
+    isolation: isolate;
+  }
+  .mesh {
+    position: absolute;
+    inset: -20%;
+    z-index: -1;
+    filter: blur(60px) saturate(1.15);
+    opacity: .55;
+    background:
+      radial-gradient(38% 42% at 12% 18%, var(--accent) 0%, transparent 70%),
+      radial-gradient(32% 38% at 82% 8%, var(--accent-2) 0%, transparent 70%),
+      radial-gradient(45% 45% at 70% 78%, var(--accent) 0%, transparent 72%);
+    animation: drift 26s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0%   { transform: translate3d(0,0,0) scale(1); }
+    100% { transform: translate3d(-3%, 2%, 0) scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) { .mesh { animation: none; } }
+
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", monospace;
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    margin: 0 0 1rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: .5em; height: .5em; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  h1.title {
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: .98;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .lede {
+    max-width: 62ch;
+    color: var(--text-dim);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    margin: 0 0 2rem;
+    text-wrap: pretty;
+  }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.75rem;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", monospace;
+    font-size: .82rem;
+    color: var(--text-faint);
+  }
+  .stats b { color: var(--text); font-weight: 700; }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom: 1px solid var(--border);
+    padding: .85rem clamp(1.25rem, 5vw, 3rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem .75rem;
+  }
+  .search {
+    flex: 1 1 220px;
+    position: relative;
+    max-width: 340px;
+  }
+  .search input {
+    width: 100%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 999px;
+    padding: .55rem 1rem .55rem 2.1rem;
+    font-size: .92rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .search svg { position: absolute; left: .7rem; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--text-faint); pointer-events: none; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .chip {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", monospace;
+    font-size: .74rem;
+    letter-spacing: .01em;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text-dim);
+    border-radius: 999px;
+    padding: .38rem .75rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .chip:hover, .chip:focus-visible { color: var(--text); border-color: var(--accent); }
+  .chip-count { margin-left: .35em; opacity: .6; }
+
+  .result-count {
+    margin-left: auto;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", monospace;
+    font-size: .78rem;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  main { padding: 1.5rem clamp(1.25rem, 5vw, 3rem) 5rem; }
+
+  section.category { padding-top: 2.75rem; scroll-margin-top: 4.5rem; }
+  section.category:first-of-type { padding-top: 2rem; }
+
+  .cat-head { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.1rem; }
+  .cat-icon {
+    width: 38px; height: 38px; flex: none;
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .cat-icon svg { width: 19px; height: 19px; }
+  .cat-head h2 { font-size: clamp(1.25rem, 2.6vw, 1.65rem); font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .cat-head .cat-meta { font-family: ui-monospace, "SF Mono", monospace; font-size: .78rem; color: var(--text-faint); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .85rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.1rem 1.15rem 1.2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    transition: transform .18s ease, border-color .18s ease;
+  }
+  .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+  @media (prefers-reduced-motion: no-preference) {
+    .card:hover { transform: translateY(-2px); }
+  }
+
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
+  .card h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  .card h3 a { text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); }
+  .card h3 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .arrow { opacity: .45; font-size: .85em; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: .35rem; flex: none; }
+  .badge {
+    font-family: ui-monospace, "SF Mono", monospace;
+    font-size: .68rem;
+    letter-spacing: .02em;
+    padding: .22rem .5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: .35em;
+  }
+  .badge::before { content: ""; width: .45em; height: .45em; border-radius: 50%; }
+  .badge.free { color: var(--free); background: var(--free-soft); }
+  .badge.free::before { background: var(--free); }
+  .badge.freemium { color: var(--freemium); background: var(--freemium-soft); }
+  .badge.freemium::before { background: var(--freemium); }
+  .badge.paid { color: var(--paid); background: var(--paid-soft); }
+  .badge.paid::before { background: var(--paid); }
+  .badge.repo { color: var(--text-dim); background: var(--bg); border: 1px solid var(--border); }
+  .badge.repo::before { display: none; }
+
+  .desc { color: var(--text-dim); font-size: .87rem; line-height: 1.55; margin: 0; }
+
+  .empty {
+    display: none;
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-faint);
+    font-family: ui-monospace, "SF Mono", monospace;
+    font-size: .9rem;
+  }
+
+  footer {
+    padding: 2rem clamp(1.25rem, 5vw, 3rem) 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: .82rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="mesh" aria-hidden="true"></div>
+  <p class="eyebrow">Curated Research · 13 Categories</p>
+  <h1 class="title">The Arsenal</h1>
+  <p class="lede">A hand-picked collection of free and dirt-cheap resources for building bold, premium, three-dimensional interfaces — from component libraries and shaders to cursor effects, app icons, and illustration packs. Almost everything here is free, open-source, or extremely affordable.</p>
+  <div class="stats">
+    <span><b id="stat-total">0</b> resources</span>
+    <span><b id="stat-cat">13</b> categories</span>
+    <span><b id="stat-repo">0</b> GitHub repos</span>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="search" type="text" placeholder="Search: e.g. shader, icons, color, cursor, mockup..." autocomplete="off" />
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="result-count" id="result-count"></div>
+</div>
+
+<main id="app"></main>
+<p class="empty" id="empty">No matching resources — clear the filter and try again.</p>
+
+<footer>Compiled through multi-agent research · pricing and license details can change, verify on the source site before use. <a href="https://github.com/en970/ui-arsenal" target="_blank" rel="noopener">View on GitHub</a></footer>
+
+<script>
+const DATA = [
+  {"category":"component-libraries","resources":[
+    {"name":"shadcn/ui","url":"https://ui.shadcn.com/","description":"A copy-paste component system for React/Next.js built on Radix UI + Tailwind — code you own and can fully customize. It has become the de facto standard; most 'premium/bold' libraries (Aceternity, Magic UI, Origin UI) are built on top of its CLI and CSS variable system. GitHub: shadcn-ui/ui (90k+ stars).","pricing":"Completely free / open source (MIT)","is_repo":false},
+    {"name":"Aceternity UI","url":"https://ui.aceternity.com/","description":"200+ 'wow-effect' components built with Tailwind CSS + Framer Motion (3D card flips, spotlights, background beams, glowing borders). Built for scroll-triggered, bold and premium-feeling projects.","pricing":"Most components free/open source; some ready-made templates (Pro) are paid","is_repo":false},
+    {"name":"Magic UI","url":"https://magicui.design/","description":"150+ animated components and effects (marquee, animated beam, bento grid, shimmer button, particles, text animations). Installable via the shadcn/ui CLI — perfect for marketing/landing pages. 19k+ stars.","pricing":"Completely free / open source (MIT)","is_repo":true},
+    {"name":"Origin UI","url":"https://originui.com/","description":"A large shadcn/ui extension with hundreds of copy-paste components: forms, navigation, data display, and complex interactive widgets. Built on Radix UI and React Aria, accessibility-first.","pricing":"Completely free / open source (MIT)","is_repo":false},
+    {"name":"React Bits","url":"https://reactbits.dev/","description":"140+ animated, interactive React components (text effects, backgrounds, UI elements). Each ships in 4 variants (JS/TS × CSS/Tailwind), installable via the shadcn CLI or jsrepo.","pricing":"Completely free / open source","is_repo":true},
+    {"name":"Cult UI","url":"https://www.cult-ui.com/","description":"shadcn/ui-compatible components built for design engineers, with tasteful micro-interactions, animated blocks, and full-page templates. Framer Motion-powered animated navbars and landing page blocks.","pricing":"Completely free / open source (MIT)","is_repo":true},
+    {"name":"Kibo UI","url":"https://www.kibo-ui.com/","description":"A composable, accessible component registry for shadcn/ui with ready-made complex components: Gantt charts, Kanban boards, code editors, color pickers, file dropzones.","pricing":"Completely free / open source (MIT), marketed as 'free forever'","is_repo":false},
+    {"name":"Animata","url":"https://animata.design/","description":"154+ hand-crafted animations and interactions built with Tailwind CSS + React, with attention to keyboard focus and reduced-motion support.","pricing":"Completely free / open source","is_repo":true},
+    {"name":"Neobrutalism Components","url":"https://www.neobrutalism.dev/","description":"A bold shadcn/ui-based component set with thick borders, hard shadows, and vivid color palettes in the 'neobrutalist' style — the exact bold, attention-grabbing trend you see all over design galleries.","pricing":"Completely free / open source (MIT)","is_repo":false},
+    {"name":"Motion Primitives","url":"https://motion-primitives.com/","description":"An animated UI kit built with Framer Motion and Tailwind CSS: text effects, scroll-triggered in-view animations, spotlight/cursor-tracking effects, and a macOS-style expanding dock.","pricing":"Core library completely free/open source (MIT); a 'Pro' pack of advanced components is paid","is_repo":true},
+    {"name":"Hover.dev","url":"https://www.hover.dev/","description":"Framer Motion-powered animated buttons, forms, sign-in flows, and content sections for React + Tailwind CSS, with a two-click copy-paste setup — a polished 'component shop' experience.","pricing":"Freemium (basic components free, advanced components/templates require Pro)","is_repo":false},
+    {"name":"HextaUI","url":"https://hextaui.com/","description":"A modern, responsive Next.js/React + Tailwind CSS component library, installable via CLI (npx hexta-ui add), with dark mode and TypeScript support, plus ready-made page blocks.","pricing":"Freemium (core components free/open source MIT; 'Pro' ready-made blocks are paid)","is_repo":false}
+  ]},
+  {"category":"animation-scroll","resources":[
+    {"name":"GSAP + ScrollTrigger","url":"https://github.com/greensock/GSAP","description":"The industry-standard JavaScript animation engine. The ScrollTrigger plugin adds scroll-triggered pinning, scrubbing, snapping, and timeline control. As of 2026, all plugins are 100% free (including commercial use) under Webflow's sponsorship.","pricing":"Free (all bonus plugins included, open for commercial use)","is_repo":true},
+    {"name":"Lenis","url":"https://github.com/darkroomengineering/lenis","description":"A lightweight, high-performance smooth-scroll library from darkroom.engineering that wraps the browser's native scroll. WebGL sync, parallax, and GSAP/Framer integration make it the go-to infrastructure behind premium sites.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"Locomotive Scroll","url":"https://github.com/locomotivemtl/locomotive-scroll","description":"A data-attribute-based smooth-scroll and parallax library built on the Lenis engine (v5). Handles viewport-entry detection, with TypeScript support.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"Motion (formerly Framer Motion / Motion One)","url":"https://github.com/motiondivision/motion","description":"The modern animation library built on the native Web Animations API that powers Framer itself, for React/JS/Vue. Offers scroll-linked effects like useScroll and whileInView, plus spring physics.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"AOS (Animate On Scroll)","url":"https://github.com/michalsnik/aos","description":"A simple CSS3-based scroll animation library driven by data attributes. 30+ ready-made entrance animations (fade, flip, slide, zoom). 28k+ stars.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"Rellax.js","url":"https://github.com/dixonandmoe/rellax","description":"A dependency-free, ~1KB vanilla JavaScript parallax library. The data-rellax-speed attribute gives elements different scroll speeds to create a sense of depth.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"Swup","url":"https://github.com/swup/swup","description":"A page-transition library that gives server-rendered sites an SPA feel: automatic CSS transition detection, caching, and fade/slide/overlay themes.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"Barba.js","url":"https://github.com/barbajs/barba","description":"A lightweight (7kb) PJAX-based library for smooth, expressive page-to-page transitions. Its lifecycle hooks and namespace-based transition rules make it a favorite in premium agency/portfolio sites when paired with GSAP. 13k stars.","pricing":"Free, open source (MIT)","is_repo":true},
+    {"name":"GSAP ScrollTrigger Examples (GitHub Topic)","url":"https://github.com/topics/gsap-scrolltrigger","description":"A GitHub topic page collecting dozens of open-source example projects and demos built with GSAP ScrollTrigger — a great reference for real-world implementations.","pricing":"Free, open source (license varies by project)","is_repo":true},
+    {"name":"react-locomotive-scroll","url":"https://github.com/antoinelin/react-locomotive-scroll","description":"A widely used React wrapper for Locomotive Scroll, making hook-based parallax and smooth-scroll effects easy in React/Next.js projects.","pricing":"Free, open source (MIT)","is_repo":true}
+  ]},
+  {"category":"3d-shader-webgl","resources":[
+    {"name":"shadergradient (ruucm/shadergradient)","url":"https://github.com/ruucm/shadergradient","description":"The actual open-source engine behind shadergradient.co. Generates animated WebGL shader gradient components for React, Framer, and Figma, built on react-three-fiber and three.js. Fully customizable in your own project.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"Paper Shaders","url":"https://github.com/paper-design/shaders","description":"A zero-dependency, ultra-fast canvas shader library with ready-made effects: mesh gradient, dot-orbit, water, dithering, noise. A React package is also available (@paper-design/shaders-react).","pricing":"Free / Open Source","is_repo":true},
+    {"name":"Whatamesh","url":"https://github.com/jordienr/whatamesh","description":"A tool that recreates Stripe's famous animated mesh gradient background. A ~10KB Gradient.js file lets you control colors via CSS variables.","pricing":"Free / Open Source","is_repo":true},
+    {"name":"Vanta.js","url":"https://github.com/tengbao/vanta","description":"Three.js and p5.js-based, ready-made animated 3D background effects (waves, net, clouds, halo) that drop in with a single line of code. Mouse/touch-interactive.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"react-three-fiber (pmndrs)","url":"https://github.com/pmndrs/react-three-fiber","description":"A React renderer for Three.js — the industry-standard way to build premium, 3D-heavy sites. Scenes, cameras, lights, and shader materials managed declaratively in JSX.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"drei (@react-three/drei)","url":"https://github.com/pmndrs/drei","description":"A collection of ready-made helper components for react-three-fiber: cameras, controls, post-processing, environment/HDRI loaders, and shader-material helpers.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"OGL (oframe/ogl)","url":"https://github.com/oframe/ogl","description":"A minimal, dependency-free WebGL library (similar API to Three.js but much lighter, ~8KB). Ideal for writing your own shaders — powers many premium/award-winning sites under the hood.","pricing":"Free / Open Source (Public Domain)","is_repo":true},
+    {"name":"curtains.js","url":"https://github.com/martinlaxenaire/curtainsjs","description":"A lightweight library that turns HTML DOM elements (images, video) into interactive textured WebGL planes; size/position defined via CSS, with easy scroll-linked distortion effects via shaders.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"WebGL Fluid Simulation","url":"https://github.com/PavelDoGreat/WebGL-Fluid-Simulation","description":"A real-time fluid simulation that runs even on mobile; every parameter (pressure, vorticity, bloom) is adjustable via dat.gui. A great starting point for bold, lively, touch-interactive backgrounds.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"tsl-textures","url":"https://github.com/boytchev/tsl-textures","description":"A collection of ready-made GPU texture/shader functions for Three.js's new Shading Language (TSL) and WebGPURenderer, using a node-based material system for modern, performant shader effects.","pricing":"Free / Open Source","is_repo":true},
+    {"name":"glslCanvas","url":"https://github.com/patriciogonzalezvivo/glslCanvas","description":"A simple tool from the author of 'The Book of Shaders' that loads GLSL fragment/vertex shaders directly into an HTML canvas — great for prototyping and learning alongside online editors.","pricing":"Free / Open Source (MIT)","is_repo":true},
+    {"name":"Spline","url":"https://spline.design/","description":"A no-code, real-time 3D scene/interaction design tool in the browser, easily exportable to React/Next.js. One of the most common no-code tools behind premium 3D sites.","pricing":"Freemium (free plan available; watermark-free and code export start at $12/mo)","is_repo":false},
+    {"name":"MagicPattern Mesh Gradient Generator","url":"https://www.magicpattern.design/tools/mesh-gradient","description":"A no-signup online tool for dragging out organic, liquid-looking mesh-gradient backgrounds and exporting them as PNG/SVG/JPG.","pricing":"Free","is_repo":false},
+    {"name":"MESH (meshgradient.com)","url":"https://meshgradient.com/","description":"A WebGL shader-based mesh gradient generator built around click-to-add points — drag the points around to bend the gradient in real time.","pricing":"Free","is_repo":false}
+  ]},
+  {"category":"icons","resources":[
+    {"name":"Lucide","url":"https://github.com/lucide-icons/lucide","description":"The community-maintained continuation of Feather Icons; 1500+ consistent, minimal line icons. React, Vue, Svelte, and Angular packages, tree-shakeable, drops right into app/web projects.","pricing":"Completely free, ISC license (commercial use included)","is_repo":true},
+    {"name":"Phosphor Icons","url":"https://github.com/phosphor-icons/homepage","description":"A flexible family of 9000+ icons across six weights — Thin, Light, Regular, Bold, Fill, Duotone — giving stylistic range for interfaces that want a bold, premium feel.","pricing":"Free, MIT license","is_repo":true},
+    {"name":"Tabler Icons","url":"https://github.com/tabler/tabler-icons","description":"6000+ SVG icons on a 24x24 grid at 2px stroke, with both outline and filled variants — a favorite in dashboards and admin-panel-style premium products.","pricing":"Free, MIT license","is_repo":true},
+    {"name":"Heroicons","url":"https://github.com/tailwindlabs/heroicons","description":"A clean, premium-feeling icon set hand-drawn by the Tailwind CSS team, in 24x24 outline/solid plus 20x20/16x16 mini variants — extremely common in modern SaaS and landing-page designs.","pricing":"Free, MIT license","is_repo":true},
+    {"name":"Iconoir","url":"https://github.com/iconoir-icons/iconoir","description":"1600+ original SVG icons with support for React, React Native, Flutter, Vue, Figma, and Framer — no premium/locked content whatsoever.","pricing":"Completely free, MIT license, no attribution required","is_repo":true},
+    {"name":"Solar Icons","url":"https://github.com/480-Design/Solar-Icon-Set","description":"9600+ icons across 7 styles (Linear, Outline, Bold, Broken, Duotone, Line Duotone, Bold Duotone); its rounded corners and full-bodied shapes fit designs chasing a 'premium 3D' feel.","pricing":"Free, CC BY 4.0 license (commercial use allowed, attribution encouraged)","is_repo":true},
+    {"name":"Remix Icon","url":"https://github.com/Remix-Design/RemixIcon","description":"A neutral system icon library of 3200+ icons in Outlined and Filled styles on a 24x24 grid, with special attention paid to readability and pixel alignment.","pricing":"Free, own Remix Icon License v1.0 (free for both commercial and personal use)","is_repo":true},
+    {"name":"Font Awesome Free","url":"https://github.com/FortAwesome/Font-Awesome","description":"One of the oldest and largest icon ecosystems; the free tier includes thousands of solid/regular/brands icons, usable as font, SVG, or web component.","pricing":"Free tier free; Pro tier adds icons/styles for a fee","is_repo":true},
+    {"name":"Material Symbols (Google)","url":"https://github.com/google/material-design-icons","description":"2500+ icons using Google's variable-font technology; outlined/rounded/sharp styles plus fill/weight/grade axes give fine-grained, animation-friendly control.","pricing":"Free, Apache License 2.0","is_repo":true},
+    {"name":"Radix Icons","url":"https://github.com/radix-ui/icons","description":"Close to 300 clean, razor-sharp icons on a 15x15 grid designed by the WorkOS team; pairs perfectly with the Radix UI component library for minimalist premium interfaces.","pricing":"Free, MIT license","is_repo":true},
+    {"name":"Untitled UI Icons","url":"https://github.com/untitleduico/icons","description":"1100+ free, clean, neutral SVG icons in line, duotone, and solid styles. 230,000+ downloads on Figma; a Pro tier adds 4600+ more icons.","pricing":"Free tier free (unlimited personal/commercial use); Pro tier is paid","is_repo":true}
+  ]},
+  {"category":"app-icon-design","resources":[
+    {"name":"AppIcon.co","url":"https://www.appicon.co/","description":"Completely free, no account or watermark. Generates an icon from an AI prompt or from your own uploaded image, producing an Xcode-ready asset catalog for iOS/iPadOS/watchOS/macOS/Android.","pricing":"Completely free","is_repo":false},
+    {"name":"Icon Kitchen","url":"https://icon.kitchen/","description":"Completely free, no account needed. Fast multi-platform icon generation for Android, iOS, and Web, with strong support for Android adaptive icons (foreground/background separation).","pricing":"Completely free","is_repo":false},
+    {"name":"MakeAppIcon","url":"https://makeappicon.com/","description":"A long-established, classic tool: generates every iOS and Android size from a single image and drops them straight into Xcode/Android Studio in seconds.","pricing":"Free","is_repo":false},
+    {"name":"Apple Design Resources","url":"https://developer.apple.com/design/resources/","description":"Apple's official app icon templates (Figma, Sketch, Photoshop/Illustrator), built for Icon Composer and fully aligned with the Human Interface Guidelines.","pricing":"Completely free, official Apple resource","is_repo":false},
+    {"name":"App Icon Template (Figma Community)","url":"https://www.figma.com/community/file/1514335373494164156/app-icon-template","description":"A current community template that exports directly into Icon Composer for iOS 26/iPadOS/macOS/watchOS.","pricing":"Free","is_repo":false},
+    {"name":"Free 400+ 3D Glass Icons (Figma)","url":"https://www.figma.com/community/file/1564238050974308122/free-400-3d-glass-icons","description":"400+ 'liquid glass'-style, full-bodied, glowing 3D icons — a style pack that directly captures the bold-premium feel this collection is built around.","pricing":"Free","is_repo":false},
+    {"name":"3D Gloss App Icon Effect (Figma)","url":"https://www.figma.com/community/file/1182493911346813106/3d-gloss-app-icon-effect","description":"A ready-made template that turns a flat logo/shape into a glossy, full-bodied 3D app icon effect — a quick way to add a 'premium glossy' feel.","pricing":"Free","is_repo":false},
+    {"name":"iOS Icon Gallery","url":"https://www.iosicongallery.com/","description":"An ad-free reference gallery of 2000+ App Store icons, filterable by color, designer, year, and category — an icon-focused design showcase.","pricing":"Completely free, no ads","is_repo":false},
+    {"name":"Muzli — App Icons Inspiration","url":"https://muz.li/inspiration/app-icons/","description":"A current roundup of app-icon UI/UX inspiration, including trending 3D/glass styles.","pricing":"Free","is_repo":false},
+    {"name":"dwmkerr/app-icon","url":"https://github.com/dwmkerr/app-icon","description":"An open-source CLI (npm install -g app-icon) that generates every required size for iOS, Android, React Native, Cordova, and Xamarin from a single icon.png. 571+ stars.","pricing":"Completely free, open source (MIT)","is_repo":true},
+    {"name":"Apple HIG — App Icons","url":"https://developer.apple.com/design/human-interface-guidelines/app-icons","description":"Apple's official guidelines covering size, corner radius, depth/shadow use, and Liquid Glass layering rules — essential reading before designing a bold, premium icon.","pricing":"Completely free, official Apple guide","is_repo":false},
+    {"name":"Icon Composer (Apple)","url":"https://developer.apple.com/design/resources/","description":"Apple's official tool bundled with Xcode 26: generates layered Liquid Glass icons for iPhone/iPad/Mac/Watch from a single design, auto-rendering light/dark/tinted variants.","pricing":"Completely free, official Apple tool","is_repo":false},
+    {"name":"Liquid Glass iOS 26 UI Kit (Figma)","url":"https://www.figma.com/community/file/1519606028357095528/liquid-glass-ios-26-ui-kit-icon-button-components","description":"Ready-made icon and button components in the iOS 18/26 Liquid Glass aesthetic — a solid starting point for full-bodied, translucent glass app icon drafts.","pricing":"Free","is_repo":false},
+    {"name":"Free 3D App Icon / Logo Mockup PSD","url":"https://goodmockups.com/free-3d-app-icon-logo-mockup-psd/","description":"A free PSD file that drops your logo into a realistic, rounded 3D app icon mockup for presentation visuals in seconds.","pricing":"Completely free","is_repo":false}
+  ]},
+  {"category":"mockup-video-tools","resources":[
+    {"name":"Previewed.app","url":"https://previewed.app/","description":"Places app screenshots into 3D device scenes (iPhone, iPad, Mac) with rotation/camera-move animations, producing promo videos and App Store visuals.","pricing":"Free 'Lite' tier available (personal use, attribution required); Plus $9.99 one-time, Pro ~$19/mo","is_repo":false},
+    {"name":"Rotato","url":"https://rotato.app/","description":"A Mac app: drag your screenshot or video onto a 3D iPhone/iPad/Mac/Android model and get camera moves, zoom, pan, and 360° rotation for cinematic promo videos/GIFs. One of the most polished tools in this category.","pricing":"Free trial available (watermarked); paid version is a one-time purchase, roughly $49-$199","is_repo":false},
+    {"name":"Mockuuups Studio","url":"https://mockuuups.studio/","description":"5200+ ready-made device/scene mockups with a drag-and-drop interface for producing image and video mockups — show your product in a phone/laptop scene and export for social/ads.","pricing":"A free-forever plan exists (some mockups require attribution); paid Starter/Pro plans unlock full commercial licensing","is_repo":false},
+    {"name":"Screen Studio","url":"https://screen.studio/","description":"A macOS screen recorder that auto-tracks your cursor for cinematic zoom-in/zoom-out and smooth pans, with 4K output — reference-quality for the 'screen motion' part of an app promo video.","pricing":"Subscription-based, roughly $9-29/mo; also a ~$229 one-time lifetime license, no free tier","is_repo":false},
+    {"name":"Shotsnapp","url":"https://shotsnapp.com/","description":"A web-based tool for quickly building device mockup scenes, with Unsplash backgrounds and ready templates to present your screenshots inside a device frame.","pricing":"Free version available (limited templates); PRO is $48/year for unlimited objects and more device models","is_repo":false},
+    {"name":"Kite","url":"https://kite.video/","description":"Turns your screen recording into an 'Apple-style promo video' by auto-tracking mouse/keyboard movement and adding cinematic 3D zoom, pan, and device mockup scenes — especially popular for landing-page hero videos.","pricing":"Free tier available (4K export); paid plans add extra features","is_repo":false},
+    {"name":"Device Frames","url":"https://deviceframes.com/","description":"A browser-based 3D device mockup editor: upload a screenshot or video, drop it into an iOS/Android phone, tablet, or laptop frame, arrange the scene, and export as PNG/JPG/WebM/MP4.","pricing":"A free 'Community Edition' is available; higher resolution/branding removal require paid plans","is_repo":false},
+    {"name":"Ultramock","url":"https://www.ultramock.io/","description":"A no-download, browser-based cinematic device mockup tool that turns screenshots into 3D-looking scenes with depth effects (tilt-shift, radial, lens, directional blur), with drag-to-rotate support.","pricing":"Free daily usage available; Pro version is a one-time purchase, roughly $29.99","is_repo":false},
+    {"name":"Jitter — Free Animated Device Templates","url":"https://jitter.video/templates/devices/","description":"A motion-design tool offering ready-made, fully customizable animated phone/tablet/laptop mockup templates (screen transitions, button taps, scroll effects) — great for showreels and social media.","pricing":"Free plan exports GIF/MP4/MOV/WebM/Lottie at 480p-720p; higher resolution is paid","is_repo":false},
+    {"name":"AppLaunchpad — Mockup Generator","url":"https://theapplaunchpad.com/mockups-generator","description":"An online mockup generator that auto-places app screenshots into 150+ device frames at proper App Store sizes — mostly static/App Store-screenshot focused, but fast and genuinely free.","pricing":"The mockup generator itself is free; the full package with unlimited export is a Pro plan, ~$15-29/mo","is_repo":false},
+    {"name":"MockUPhone","url":"https://mockuphone.com/","description":"A simple, completely free web tool that instantly drops a single screenshot into an iPhone, iPad, Android, or TV frame and lets you download it as a PNG. No video, but the most practical zero-cost static option.","pricing":"Completely free, no signup","is_repo":false},
+    {"name":"Placeit","url":"https://placeit.net/videos/app-demos","description":"A huge library of ready-made scenes for phone/laptop video mockups; 250+ templates are fully free and watermark-free to download, though manual 3D rotation control is limited.","pricing":"Freemium (250+ free templates; full access $14.95/mo)","is_repo":false},
+    {"name":"LottieFiles — Device Mockup Animations","url":"https://lottiefiles.com/free-animations/mobile-animated-mockup","description":"Completely free, ready-made phone mockup animations in Lottie/GIF/MP4 format — no real 3D control, but very practical for embedding straight into a developer's site or app.","pricing":"Completely free","is_repo":false},
+    {"name":"Canva Video Mockup Templates","url":"https://www.canva.com/create/video-mockups/","description":"Phone/laptop video mockups with a free Canva account; watermark-free downloads are possible, though some premium elements require Canva Pro.","pricing":"Free (some elements require Canva Pro)","is_repo":false},
+    {"name":"Envato Elements — Free Files","url":"https://elements.envato.com/free-files","description":"Envato Elements is subscription-based, but offers 12 hand-picked free files every month — including phone/app promo video templates — downloadable with a free account.","pricing":"Free (12 curated files monthly); full library $16.50-33/mo","is_repo":false},
+    {"name":"Motion Array — Phone/App Promo Templates","url":"https://motionarray.com/after-effects-templates/phone-promo-mockup-bundle-224101/","description":"After Effects templates tagged 'FREE' can be downloaded without a credit card, unlimited — ready-made project files for 3D phone-animated promo videos (a paid plan is required for commercial licensing).","pricing":"Free download (commercial license requires a paid plan)","is_repo":false},
+    {"name":"Renderforest","url":"https://www.renderforest.com/animation-videos/mobile-app-promotion","description":"Ready-made mockup toolkits and animation templates for mobile app promotion; the free plan renders at 360p with a watermark, and the Lite plan starts at $9/mo for watermark-free HD.","pricing":"Freemium (free 360p+watermark; HD from $9/mo)","is_repo":false},
+    {"name":"InVideo AI Mockup Generator","url":"https://invideo.io/make/mockup-generator/","description":"A free AI-powered mockup generator that builds screen-display videos for phone/laptop/tablet without needing Photoshop.","pricing":"Free","is_repo":false},
+    {"name":"Mockup World — Animated","url":"https://www.mockupworld.co/free/tag/animated/","description":"Completely free PSD-based animated mockups (including current device models like the Galaxy S25 Ultra and iPhone 16 Pro) exportable as GIF/video.","pricing":"Completely free","is_repo":false},
+    {"name":"FlexClip App Mockup Video","url":"https://www.flexclip.com/create/app-mockup-video.html","description":"A video builder supporting 2D/3D phone mockups with transition/motion effects; the free plan has a watermark and a 720p cap, while the Plus plan adds watermark-free 1080p.","pricing":"Freemium (free watermarked 720p; watermark-free from $11.99/mo)","is_repo":false},
+    {"name":"react-device-frameset","url":"https://github.com/zheeeng/react-device-frameset","description":"An MIT-licensed, open-source React component that displays your app live inside an iPhone/iPad/MacBook frame — pair it with screen recording to produce your own promo video.","pricing":"Completely free, open source (MIT)","is_repo":true}
+  ]},
+  {"category":"design-inspiration-galleries","resources":[
+    {"name":"Godly","url":"https://godly.design/","description":"A gallery curating the best web, interface, and interaction designs shared on X/Twitter, with categories for sites, apps, logos, OG images, sections, and app icons — a bold curatorial eye.","pricing":"Free to browse (an optional support subscription exists)","is_repo":false},
+    {"name":"Lapa Ninja","url":"https://www.lapa.ninja/","description":"A massive archive of 7,000+ landing pages and 15,000+ full-page website screenshots, filterable by category, industry, and year.","pricing":"Completely free to browse","is_repo":false},
+    {"name":"Awwwards","url":"https://www.awwwards.com/websites/","description":"Considered the 'Oscars' of web design, running Site of the Day/Month/Year awards since 2009. Lists bold, experimental, WebGL/3D-heavy award-winning sites daily — one of the densest concentrations of premium interactive sites anywhere.","pricing":"Free to browse (paid submission/evaluation options for site owners)","is_repo":false},
+    {"name":"Mobbin","url":"https://mobbin.com/","description":"A UI pattern library covering 600,000+ screens and 300,000+ user flows pulled from real mobile and web apps, searchable by screen type (onboarding, dashboard, pricing) — a strong reference for product/interaction design.","pricing":"Freemium — free limited access, Pro $10/mo (billed yearly)","is_repo":false},
+    {"name":"SaaSFrame","url":"https://www.saasframe.io/","description":"A library showing landing pages, pricing pages, dashboards, onboarding, and email flows from 5,000+ real SaaS examples. Some pages even offer downloadable Figma files.","pricing":"Freemium — free to browse, paid plan for Figma download and advanced filters","is_repo":false},
+    {"name":"Curated Design (Craftwork)","url":"https://curated.design/","description":"A daily-curated catalog of inspiring, creative design examples across the web, with a distinct editorial eye.","pricing":"Completely free","is_repo":false},
+    {"name":"One Page Love","url":"https://onepagelove.com/","description":"Running since 2008, one of the oldest galleries reviewing 9,000+ one-page websites and templates. Each entry ships with screenshots, design notes, and a live demo link — great for long-scroll, story-driven pages.","pricing":"Completely free (template sales are separate and paid)","is_repo":false},
+    {"name":"SiteInspire","url":"https://www.siteinspire.com/","description":"A long-running design gallery with advanced filtering by style, type, subject, and platform, with a bias toward generous whitespace and strong typography.","pricing":"Completely free","is_repo":false},
+    {"name":"Httpster","url":"https://httpster.net/","description":"A simple 'website of the day' gallery favoring minimal, typography-forward designs — a good, unfussy complement to noisier galleries.","pricing":"Completely free","is_repo":false},
+    {"name":"Refero","url":"https://refero.design/","description":"A searchable library of 37,000+ web and iOS design references, similar to Mobbin but generally more affordable.","pricing":"Freemium — 3-day free trial with no credit card, paid subscription after","is_repo":false},
+    {"name":"ScreensDesign","url":"https://screensdesign.com/","description":"A weekly-updated library of onboarding, paywall, and store-listing screens from 1,500+ iOS apps, enriched with revenue/download data — a limited free alternative to Mobbin for mobile app UI.","pricing":"Freemium — free limited access, Pro ~$15/mo","is_repo":false}
+  ]},
+  {"category":"framer-templates","resources":[
+    {"name":"Blocks (SaaS Website Kit)","url":"https://marketplace.framer.com/marketplace/templates/blocks/","description":"A free SaaS UI kit with 100+ ready-made sections and components. Alongside header, feature, pricing, and testimonial sections, it also includes three styles of '3D asset' sets — a great drag-and-drop starting point for a premium-looking page.","pricing":"Free (Framer Limited License)","is_repo":false},
+    {"name":"Framer University — Free Resources","url":"https://framer.university/resources","description":"A 416+ item archive of copy-paste Framer animations, components, and code overrides. Bold, 3D-heavy resources like a '3D Image Split Scroll Animation,' a 'Depth Globe Component,' a 'Shader Button Component,' and an 'X-Ray Hover Effect,' all filterable and completely free.","pricing":"Entirely free","is_repo":false},
+    {"name":"6 Free Components by Framer University","url":"https://6-comps.learnframer.site/","description":"A free 6-piece component pack from Framer University designed to make your site 'feel premium': an iPadOS-style custom cursor, Parallax Floating, Ticker Scroll, Text Wrap, Text Wave, and Pixel Trail effects.","pricing":"Completely free","is_repo":false},
+    {"name":"Scroll Sequences","url":"https://www.framer.com/community/marketplace/components/scroll-sequences/","description":"A component listed under the 'Free Interactions Component' tag on the Framer Marketplace that plays an image/frame sequence tied to scroll — perfect for tying a 3D product render or frame-by-frame rotation to scroll for a 'scrollytelling' feel.","pricing":"Free","is_repo":false},
+    {"name":"SegmentUI — Free Scrolling Remix Library","url":"https://segmentui.com/remix/scrolling","description":"Hundreds of free scroll-animation remixes compiled from 30+ designers: Stacking Cards, Parallax Scrolling, 3D Scroll Rotation, Domino Scroll, Unscramble Text Scroll, and other bold, lively effects. A $99-$199 Pro kit exists, but the core library is entirely free.","pricing":"Core library free, optional Pro kit $99-$199","is_repo":false},
+    {"name":"Waitlyst 2.0","url":"https://www.framer.com/marketplace/templates/waitlyst2/","description":"A free waitlist/landing template by Samar Jamil, packed with 3D graphics and striking snow/particle effects — one of Framer's standout free 3D template examples.","pricing":"Free","is_repo":false},
+    {"name":"Bolder — Portfolio Template","url":"https://www.framer.com/marketplace/templates/bolder/","description":"A free portfolio template by Tamer Magdy notable for its fluid animations and interactive elements, living up to its bold, confident visual language.","pricing":"Free","is_repo":false},
+    {"name":"Boldex — Portfolio Template","url":"https://www.framer.com/community/marketplace/templates/boldex/","description":"A free portfolio template by Framify with strong typography and bold visual elements — a good foundation for a bold showcase site.","pricing":"Free","is_repo":false},
+    {"name":"Framer Marketplace — Free Components","url":"https://www.framer.com/marketplace/components/tags/free/","description":"The official Framer Marketplace page filtered to free-only components — hundreds of free UI components and animations from top-tier designers, narrowable by category (scroll, 3D, hover, etc.).","pricing":"Only free items shown via the filter","is_repo":false},
+    {"name":"Framer Marketplace — 3D Templates","url":"https://www.framer.com/community/marketplace/templates/categories/3d/","description":"The official category page collecting 100+ 3D Framer templates: smooth animations, interactive 3D elements, and bold visuals. A price filter can isolate the free ones.","pricing":"Mixed (a free filter exists, some are paid)","is_repo":false}
+  ]},
+  {"category":"github-design-repos","resources":[
+    {"name":"Awesome Design Tools","url":"https://github.com/goabstract/Awesome-Design-Tools","description":"One of the most comprehensive 'awesome list' compilations: design tools, prototyping, inspiration sources, and icon/mockup sets, all organized by category.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"Design Resources for Developers","url":"https://github.com/bradtraversy/design-resources-for-developers","description":"A 66k+ star list rounding up stock photos, mockups, icons, illustrations, color palettes, UI kits, and font resources in one developer-focused design library.","pricing":"Free / open source (most linked resources are also free)","is_repo":true},
+    {"name":"React Bits (repo)","url":"https://github.com/DavidHDev/react-bits","description":"The source code behind reactbits.dev: a collection of live, animated, fully customizable React components (3D cards, text effects, background animations) — copy-paste-ready for that bold, lively feel.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"Magic UI (repo)","url":"https://github.com/magicuidesign/magicui","description":"An animated component and effect library for design engineers (marquee, particles, dock, bento grid, shine border, etc.), compatible with shadcn/ui, aimed at a premium feel.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"Spectrum UI","url":"https://github.com/arihantcodes/spectrum-ui","description":"A reusable component collection assembled from Aceternity UI, Magic UI, and shadcn/ui — the closest community-built open-source alternative since Aceternity's own component repo isn't public.","pricing":"Free / open source","is_repo":true},
+    {"name":"Motion Primitives (repo)","url":"https://github.com/ibelick/motion-primitives","description":"A UI kit for building 'faster, more beautiful, animated interfaces' with Framer Motion + Tailwind: page transitions, scroll-triggered animations, and micro-interactions.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"shadcn/ui (repo)","url":"https://github.com/shadcn-ui/ui","description":"A 119k+ star, copy-paste-architecture accessible component and code-distribution platform — the foundation many premium/3D component libraries (Aceternity, Magic UI, Spectrum) are built on.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"Awesome shadcn/ui","url":"https://github.com/birobirobiro/awesome-shadcn-ui","description":"A 20k+ star awesome-list compiling everything related to the shadcn/ui ecosystem — component libraries, templates, tools, generators.","pricing":"Free / open source","is_repo":true},
+    {"name":"21st.dev","url":"https://github.com/serafimcloud/21st","description":"The largest shadcn/ui-based React/Tailwind component, block, and hook marketplace, run 'like npm' — combines design discovery with code sharing.","pricing":"Free / open source (some premium blocks/templates are paid)","is_repo":true},
+    {"name":"Awesome WebGL","url":"https://github.com/sjfricke/awesome-webgl","description":"A list compiling WebGL libraries, shader resources, learning materials, and tools — a gateway resource for anyone wanting to do shader/WebGL work.","pricing":"Free / open source","is_repo":true},
+    {"name":"Awesome Three.js","url":"https://github.com/AxiomeCG/awesome-threejs","description":"A compilation of libraries, example projects, shaders, and tutorials for the Three.js ecosystem — a reference list for building 3D, lively web experiences (hero scenes, particle systems).","pricing":"Free / open source","is_repo":true},
+    {"name":"react-three-fiber (repo)","url":"https://github.com/pmndrs/react-three-fiber","description":"A React renderer for Three.js with 31k+ stars, letting you write WebGL-based 3D/shader scenes as React components — the industry standard for premium 3D hero sections.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"Lenis (repo)","url":"https://github.com/darkroomengineering/lenis","description":"'Smooth scroll as it should be' — the library behind the scroll feel of many award-winning/premium sites.","pricing":"Free / open source (MIT)","is_repo":true},
+    {"name":"GSAP (repo)","url":"https://github.com/greensock/GSAP","description":"The industry-standard JavaScript animation library for scroll-triggered animation (via the ScrollTrigger plugin) — most advanced scroll effects on the web are built with this.","pricing":"Free / open source (Standard version free)","is_repo":true},
+    {"name":"AOS (repo)","url":"https://github.com/michalsnik/aos","description":"A lightweight library that adds fade/zoom/slide animations triggered on scroll with simple setup — a low-effort way to quickly add a 'lively' feel.","pricing":"Free / open source (MIT)","is_repo":true}
+  ]},
+  {"category":"3d-models-scroll","resources":[
+    {"name":"Poly Haven","url":"https://polyhaven.com/models","description":"1700+ hand-crafted models, HDRIs, and textures, entirely CC0 (public domain, no attribution, free for commercial use). Not AI-generated, high quality — one of the most trustworthy CC0 sources out there.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"Kenney.nl — 3D Assets","url":"https://kenney.nl/assets/category:3D","description":"40,000+ CC0 assets: low-poly game/object sets. The 'Kenney Game Assets All-in-1' bundle packs 60,000+ assets into a single archive. No attribution required.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"Quaternius","url":"https://quaternius.com/","description":"Stylized low-poly 3D sets (space, characters, environments, etc.) in FBX/OBJ/glTF format, usable without limit in commercial projects, entirely CC0.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"Poly Pizza","url":"https://poly.pizza/","description":"10,600+ low-poly models, directly downloadable as glTF/OBJ — handy for Three.js/react-three-fiber projects. Licensing varies by model (mostly CC0, some CC-BY).","pricing":"Free (license varies by model)","is_repo":false},
+    {"name":"Sketchfab — Free/CC Section","url":"https://sketchfab.com/features/free-3d-models","description":"600,000+ freely downloadable models; licensing varies per model (CC0, CC-BY, CC-BY-NC). Check each model's license tag before downloading.","pricing":"Free to download (license varies by model)","is_repo":false},
+    {"name":"KhronosGroup glTF-Sample-Assets","url":"https://github.com/KhronosGroup/glTF-Sample-Assets","description":"Reference models (Damaged Helmet, Avocado, etc.) demonstrating glTF format features, mostly CC0/permissively licensed — the standard resource for testing Three.js's GLTFLoader.","pricing":"Completely free, open source","is_repo":true},
+    {"name":"Google model-viewer — Shared Assets","url":"https://modelviewer.dev/shared-assets/","description":"Sample .glb models (Astronaut, robot, shoe, etc.) provided by Google for its model-viewer web component, Apache 2.0 licensed and directly importable into Three.js/R3F projects.","pricing":"Completely free, Apache 2.0","is_repo":false},
+    {"name":"3dicons.co","url":"https://3dicons.co/","description":"1440+ 3D icons, entirely CC0, free for commercial use with no attribution. Downloadable as .glb/.png/Figma — great for dropping straight into a hero scene.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"Spline Community — #scroll / #free","url":"https://community.spline.design/tag/scroll","description":"Free, one-click 'remixable' 3D scenes shared by the community; the #scroll tag surfaces scenes with scroll-linked camera/object animation — the closest match to an Apple-style experience.","pricing":"Free scenes (Spline's own viewer/free-plan limits apply)","is_repo":false},
+    {"name":"Codrops — Scroll-Driven 3D Demos","url":"https://tympanus.net/codrops/tag/three-js/","description":"Articles like 'Reactive Depth' and 'Cinematic 3D Scroll with GSAP' walking through scroll-synced 3D experiences, with the code for every article shared openly and freely on GitHub.","pricing":"Completely free, open-source code","is_repo":true},
+    {"name":"adrianhajdin/iphone","url":"https://github.com/adrianhajdin/iphone","description":"A GSAP + Three.js clone of the Apple iPhone 15 Pro website — a hugely popular, thorough open-source reference for scroll-linked 3D product rotation and camera movement.","pricing":"Completely free, open source","is_repo":true},
+    {"name":"codebucks27 — Apple iPhone 3D Landing Starter","url":"https://github.com/codebucks27/Apple-iphone-3d-landing-page-starter-Code","description":"Starter code for an Apple iPhone 14-style, scroll-animated product page built with Three.js + GSAP, with an accompanying tutorial link.","pricing":"Completely free, open source","is_repo":true},
+    {"name":"14islands/r3f-scroll-rig","url":"https://github.com/14islands/r3f-scroll-rig","description":"A production-grade library that syncs Three.js scenes with DOM elements — the scroll+3D infrastructure behind many premium agency sites.","pricing":"Completely free, open source (ISC)","is_repo":true},
+    {"name":"Wawa Sensei — R3F Scroll Animations Tutorial","url":"https://wawasensei.dev/tuto/react-three-fiber-tutorial-scroll-animations","description":"A step-by-step walkthrough of react-three-fiber + drei + GSAP scroll animation, with the code shared on GitHub — the best starting point for building this from scratch.","pricing":"Completely free","is_repo":false}
+  ]},
+  {"category":"color-typography","resources":[
+    {"name":"Coolors","url":"https://coolors.co/","description":"Generate unlimited palettes in seconds with the spacebar, lock colors, check contrast; export as HEX/RGB/SCSS, with Figma/Adobe plugins. The most popular tool for fast, lively palette exploration.","pricing":"Free (Pro monthly plan optional)","is_repo":false},
+    {"name":"Realtime Colors","url":"https://www.realtimecolors.com/","description":"Shows your chosen colors live on a real website mockup, including WCAG AA/AAA contrast checks — ideal for testing bold/premium color combinations in an actual interface.","pricing":"Completely free","is_repo":false},
+    {"name":"Huemint","url":"https://huemint.com/","description":"Uses AI to generate original color schemes for a brand/website, previewed on realistic templates — best used as an exploration/inspiration tool rather than an accessibility checker.","pricing":"Free (advanced features are credit-based)","is_repo":false},
+    {"name":"Colorffy — Palette Generator","url":"https://colorffy.com/palette-generator","description":"Generates perceptually natural palettes in the Oklab color space; 7 harmony types, CSS/SCSS/Tailwind export, and APCA/WCAG contrast checking.","pricing":"Free (advanced export is a paid yearly plan)","is_repo":false},
+    {"name":"Colorffy — Mesh Gradient Generator","url":"https://colorffy.com/mesh-gradient-generator","description":"Generates blurry, multi-color mesh-gradient backgrounds with pure CSS — a fast fix for the mesh-gradient hero backgrounds common in modern premium SaaS interfaces.","pricing":"Completely free","is_repo":false},
+    {"name":"UI Colors","url":"https://uicolors.app/","description":"Generates a full Tailwind CSS-compatible tonal scale (50-950) from a single HEX/HSL color, with live previews on buttons/cards and a Figma plugin for exporting as variables.","pricing":"Completely free","is_repo":false},
+    {"name":"uiGradients","url":"https://uigradients.com/","description":"A curated, named collection of colorful gradients, copyable as HEX/CSS or downloadable as high-res JPGs — a ready-made gradient library for bold hero backgrounds.","pricing":"Completely free","is_repo":false},
+    {"name":"CSS Mesher","url":"https://csshero.org/mesher/","description":"Builds mesh gradients using pure CSS; drag points to customize, then export as PNG/JPEG/SVG or copy the CSS code directly.","pricing":"Completely free","is_repo":false},
+    {"name":"MSHR","url":"https://www.mshr.app/","description":"A collection of 182 ready-made vanilla-CSS mesh gradients — one of the earliest animated mesh-background generators, with copy-paste CSS code.","pricing":"Completely free","is_repo":false},
+    {"name":"Fontpair","url":"https://fontpair.co/","description":"A gallery of 1000+ curated Google Fonts (and Fontshare) pairings you can preview with your own text and save as favorites — ready-made heading/body combinations for bold interfaces.","pricing":"Completely free","is_repo":false},
+    {"name":"Fontjoy","url":"https://fontjoy.com/","description":"A neural-network-driven font pairing tool that generates a random heading/subheading/body trio with one click — all suggestions come from Google Fonts, free for commercial use too.","pricing":"Completely free, no account needed","is_repo":false},
+    {"name":"Fontshare","url":"https://www.fontshare.com/","description":"A quality-focused free font platform from the Indian Type Foundry, home to bold, modern Inter alternatives like Clash Display, Cabinet Grotesk, Switzer, and General Sans.","pricing":"Completely free (personal + commercial use)","is_repo":false},
+    {"name":"Radix Colors","url":"https://github.com/radix-ui/colors","description":"An accessible color system with 336 colors across 22 scales, automatic dark-mode support, and guaranteed WCAG contrast ratios — also includes a tool for generating a Radix-style scale from your own custom color.","pricing":"Completely free, open source (MIT)","is_repo":true},
+    {"name":"Open Color","url":"https://github.com/yeun/open-color","description":"An open-source color palette optimized for UI with perceptually consistent brightness, available in CSS, Sass, Less, Tailwind, and TypeScript formats.","pricing":"Completely free, open source (MIT)","is_repo":true}
+  ]},
+  {"category":"cursor-microinteraction","resources":[
+    {"name":"cursor-effects (tholman)","url":"https://github.com/tholman/cursor-effects","description":"12 ready-made effects (Rainbow Cursor, Fairy Dust, Trailing Cursor, Emoji Rain, etc.) — 90s nostalgia rewritten in modern JS. Drops in with a single line, with reduced-motion support.","pricing":"Completely free, open source (MIT)","is_repo":true},
+    {"name":"react-animated-cursor","url":"https://github.com/stephenscaff/react-animated-cursor","description":"A ready-made, dual-ring (inner dot + outer circle) animated cursor component for React, with grow/color-change support when hovering links and buttons.","pricing":"Completely free, open source","is_repo":true},
+    {"name":"react-component-cursor","url":"https://github.com/yhattav/react-component-cursor","description":"Lets you use any React component as a custom cursor; under 10KB, zero dependencies, and SSR-compatible (Next.js/Gatsby).","pricing":"Completely free, open source (MIT)","is_repo":true},
+    {"name":"Blobity","url":"https://github.com/gmrchk/blobity","description":"A spring-physics-driven 'blob' cursor that changes size/color over links and buttons, and morphs into a comet-like trail on fast movement. React/Vue integration available.","pricing":"Free in open-source use (GPLv3); commercial use requires a separate license","is_repo":true},
+    {"name":"Cursify","url":"https://cursify.vercel.app","description":"Ready-made cursor animation components — blob cursor, rainbow cursor, character cursor — for React/Next.js, built on @react-spring/web.","pricing":"Completely free (an optional paid Pro pack exists alongside it)","is_repo":true},
+    {"name":"React Bits — Magnet","url":"https://reactbits.dev/animations/magnet","description":"A ready-made, copy-paste 'magnetic' hover effect with JS/TS and CSS/Tailwind variants — elements that glide toward the cursor with soft spring physics.","pricing":"Completely free (MIT + Commons Clause)","is_repo":true},
+    {"name":"Aceternity UI — Magnetic Button","url":"https://ui.aceternity.com/components","description":"A button that glides toward the cursor with soft spring physics, built with Tailwind CSS + Framer Motion, part of the wider component library.","pricing":"Most components free; an optional one-time 'All-Access' paid pack exists","is_repo":false},
+    {"name":"shadcn.io — Magnetic Button","url":"https://www.shadcn.io/button/magnetic-button","description":"A ready-made, copy-paste button component that follows the cursor with spring physics, built for the shadcn/Tailwind/TypeScript ecosystem.","pricing":"Completely free","is_repo":false},
+    {"name":"Magnetic Button Tutorial (Olivier Larose)","url":"https://blog.olivierlarose.com/tutorials/magnetic-button","description":"A step-by-step guide covering two different ways to build a magnetic button with GSAP and Framer Motion, complete with sample code for learning from scratch.","pricing":"Completely free","is_repo":false},
+    {"name":"Hover.css","url":"https://github.com/IanLunn/Hover","description":"100+ CSS3 hover effects applied by adding a single class to buttons, links, or SVGs; available as CSS/Sass/LESS.","pricing":"Free for personal/open-source use (MIT); commercial use requires a separate license","is_repo":true},
+    {"name":"140+ UI Micro Interaction Examples — FreeFrontend","url":"https://freefrontend.com/ui-micro-interaction/","description":"A curated list of copy-paste-ready CodePen button/toggle/form micro-interaction examples.","pricing":"Completely free","is_repo":false},
+    {"name":"Cursor Party (PartyKit)","url":"https://blog.partykit.io/posts/cursor-party/","description":"An interesting twist on the classic single-cursor effect: adds real-time, multiplayer cursors to your site, so visitors can see each other's cursors live.","pricing":"Completely free, open source","is_repo":true}
+  ]},
+  {"category":"illustration-packs","resources":[
+    {"name":"unDraw","url":"https://undraw.co/","description":"Thousands of color-customizable, minimal flat-style SVG illustrations — one of the classic go-tos for landing-page hero sections. No attribution required.","pricing":"Completely free","is_repo":false},
+    {"name":"Open Doodles","url":"https://www.opendoodles.com/","description":"Pablo Stanley's hand-drawn, 'sketchy'-style doodle illustrations in SVG/PNG/GIF — great for warm, playful hero visuals.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"Humaaans","url":"https://www.humaaans.com/","description":"A 'mix and match' human-illustration library — combine different poses, outfits, and hairstyles to build your own custom character scenes.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"Open Peeps","url":"https://www.openpeeps.com/","description":"A hand-drawn character library built from mix-and-match arm/leg/face-expression pieces — commonly used for personas, user-flow, and empty-state illustrations.","pricing":"Completely free, CC0","is_repo":false},
+    {"name":"IRA Design","url":"https://iradesign.io/","description":"Gradient-colored, hand-drawn-style character and object illustrations in SVG/PNG/AI format, fully open source.","pricing":"Completely free, open source (MIT)","is_repo":true},
+    {"name":"Storyset","url":"https://storyset.com/","description":"50,000+ customizable, animated (Lottie) illustrations across 5 styles (Cuate, Bro, Amico, Pana, Rafiki), with color/pose editing right in the browser.","pricing":"Freemium (attribution required on the free tier; attribution-free on Premium)","is_repo":false},
+    {"name":"DrawKit","url":"https://www.drawkit.com/free-illustrations","description":"400+ illustrations and 300+ icons, free, in a consistent style across 2D and 3D sets — popular for startup/SaaS hero sections.","pricing":"Free (3D models/animations require a Pro membership)","is_repo":false},
+    {"name":"Blush","url":"https://blush.design/","description":"A platform of mix-and-match 3D/flat illustrations from independent illustrators, customizable and downloadable; use the 'free' filter to isolate the free ones.","pricing":"Freemium (free PNG downloads; SVG/vector requires a paid plan)","is_repo":false},
+    {"name":"Craftwork — Free 3D Assets","url":"https://craftwork.design/free/3d-assets","description":"Ready-made, premium-feeling 3D object/scene sets for hero sections, downloadable in Blender/glTF/PNG formats.","pricing":"Freemium (select packs free, full catalog requires Pro membership)","is_repo":false},
+    {"name":"DiceBear","url":"https://www.dicebear.com/","description":"A library/API generating deterministic SVG avatars across 35+ styles (Avataaars, Bottts, etc.) — the most widely used open-source solution for automatic, consistent avatars keyed to a username.","pricing":"Completely free, open source (MIT)","is_repo":true},
+    {"name":"Avataaars","url":"https://avataaars.com/","description":"Pablo Stanley's classic 'mix and match' avatar library (clothing, hair, expression, accessory combinations); free for commercial and personal use with no attribution.","pricing":"Completely free","is_repo":false},
+    {"name":"Notion Avatar Maker","url":"https://notion-avatar.app/","description":"An open-source avatar generator styled after Notion's own avatars — customize in the browser and download as PNG/SVG.","pricing":"Completely free, open source","is_repo":true},
+    {"name":"Craftwork — Free Userpics Pack","url":"https://userpics.craftwork.design/","description":"100 vector avatars (circle/square formats) in SVG+PNG, Figma-compatible — ready for user-profile/team pages.","pricing":"Completely free (Pro subscription unlocks more assets)","is_repo":false},
+    {"name":"Icons8 Ouch!","url":"https://icons8.com/illustrations","description":"A huge illustration library mixing 3D and flat styles; filter by 'Free' to isolate the no-cost ones.","pricing":"Freemium (attribution required on the free tier; attribution-free on Pro)","is_repo":false}
+  ]}
+];
+
+const META = {
+  "component-libraries": { title: "Component Libraries", icon: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>' },
+  "animation-scroll": { title: "Scroll & Animation", icon: '<path d="M12 3v18"/><path d="M7 8l5-5 5 5"/><path d="M7 16l5 5 5-5"/>' },
+  "3d-shader-webgl": { title: "3D / Shader / WebGL", icon: '<circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="8.5" ry="3.4"/><path d="M12 3.5v17"/>' },
+  "icons": { title: "Icon Sets", icon: '<path d="M12 3l2.6 5.8L21 9.5l-4.6 4.3L17.6 21 12 17.6 6.4 21l1.2-7.2L3 9.5l6.4-.7z"/>' },
+  "app-icon-design": { title: "App Icon Design", icon: '<rect x="4" y="4" width="16" height="16" rx="6"/><circle cx="12" cy="12" r="3.2"/>' },
+  "mockup-video-tools": { title: "Mockup & Promo Video Tools", icon: '<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.2 18.2l3.6 2v-4z"/>' },
+  "design-inspiration-galleries": { title: "Design Inspiration Galleries", icon: '<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="5" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/>' },
+  "framer-templates": { title: "Free Framer Templates", icon: '<path d="M4 3h16v6H10z"/><path d="M4 9h6v6h6"/><path d="M4 15h6v6"/>' },
+  "github-design-repos": { title: "Open-Source GitHub Repos", icon: '<circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><circle cx="18" cy="9" r="2.6"/><path d="M6 8.6V15.4"/><path d="M6 15.4C6 12 9 11 12 11c3 0 5.6-.6 6-2"/>' },
+  "3d-models-scroll": { title: "Free 3D Models for Scroll Effects", icon: '<path d="M12 2.5l8.2 4.7v9.6L12 21.5l-8.2-4.7V7.2z"/><path d="M3.8 7.2L12 12l8.2-4.8"/><path d="M12 12v9.5"/>' },
+  "color-typography": { title: "Color & Typography Tools", icon: '<circle cx="8" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><circle cx="12" cy="15" r="4"/>' },
+  "cursor-microinteraction": { title: "Cursor & Micro-interactions", icon: '<path d="M5 3l6 16 2.5-6.5L20 10z"/>' },
+  "illustration-packs": { title: "Free Illustration Packs", icon: '<circle cx="9" cy="9" r="2"/><path d="M3 17l5-5 4 4 6-7 3 3"/><rect x="3" y="3" width="18" height="18" rx="2.5"/>' }
+};
+
+function tier(pricing) {
+  const p = pricing.toLowerCase();
+  if (/no free tier/.test(p)) return { cls: "paid", label: "Mostly paid" };
+  const hasPaid = /(\$|\/mo|\/yr|paid|pro\b|subscription|one-time)/.test(p);
+  const hasFree = /free/.test(p);
+  if (hasFree && !hasPaid) return { cls: "free", label: "Free" };
+  if (hasFree && hasPaid) return { cls: "freemium", label: "Freemium" };
+  return { cls: "paid", label: "Mostly paid" };
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+const app = document.getElementById("app");
+const chipsEl = document.getElementById("chips");
+let totalCount = 0, repoCount = 0;
+
+DATA.forEach(cat => {
+  const meta = META[cat.category];
+  totalCount += cat.resources.length;
+  repoCount += cat.resources.filter(r => r.is_repo).length;
+
+  const section = document.createElement("section");
+  section.className = "category";
+  section.id = "cat-" + cat.category;
+
+  const head = document.createElement("div");
+  head.className = "cat-head";
+  head.innerHTML = `<span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${meta.icon}</svg></span>
+    <div><h2>${meta.title}</h2><div class="cat-meta">${cat.resources.length} resources</div></div>`;
+  section.appendChild(head);
+
+  const grid = document.createElement("div");
+  grid.className = "grid";
+
+  cat.resources.forEach(r => {
+    const t = tier(r.pricing);
+    const card = document.createElement("article");
+    card.className = "card";
+    card.dataset.text = (r.name + " " + r.description + " " + meta.title).toLowerCase();
+    card.innerHTML = `
+      <div class="card-top">
+        <h3><a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(r.name)} <span class="arrow">↗</span></a></h3>
+      </div>
+      <div class="badges">
+        <span class="badge ${t.cls}">${t.label}</span>
+        ${r.is_repo ? '<span class="badge repo">GitHub</span>' : ''}
+      </div>
+      <p class="desc">${escapeHtml(r.description)}</p>
+    `;
+    grid.appendChild(card);
+  });
+
+  section.appendChild(grid);
+  app.appendChild(section);
+
+  const chip = document.createElement("button");
+  chip.className = "chip";
+  chip.type = "button";
+  chip.innerHTML = `${meta.title}<span class="chip-count">${cat.resources.length}</span>`;
+  chip.addEventListener("click", () => {
+    section.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
+  chipsEl.appendChild(chip);
+});
+
+document.getElementById("stat-total").textContent = totalCount;
+document.getElementById("stat-repo").textContent = repoCount;
+
+const searchInput = document.getElementById("search");
+const resultCount = document.getElementById("result-count");
+const emptyEl = document.getElementById("empty");
+const allCards = Array.from(document.querySelectorAll(".card"));
+const allSections = Array.from(document.querySelectorAll("section.category"));
+
+function applyFilter() {
+  const q = searchInput.value.trim().toLowerCase();
+  let visible = 0;
+  allCards.forEach(c => {
+    const match = !q || c.dataset.text.includes(q);
+    c.style.display = match ? "" : "none";
+    if (match) visible++;
+  });
+  allSections.forEach(s => {
+    const anyVisible = Array.from(s.querySelectorAll(".card")).some(c => c.style.display !== "none");
+    s.style.display = anyVisible ? "" : "none";
+  });
+  resultCount.textContent = q ? `${visible} / ${totalCount} resources` : `${totalCount} resources`;
+  emptyEl.style.display = visible === 0 ? "block" : "none";
+}
+searchInput.addEventListener("input", applyFilter);
+applyFilter();
+</script>
+</body>
+</html>
