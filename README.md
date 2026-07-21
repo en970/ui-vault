@@ -1,4 +1,4 @@
-# 🗃️ The Arsenal
+# 🗃️ UI Vault
 
 **A hand-picked list of free (or dirt-cheap) resources for building bold, premium, three-dimensional interfaces.**
 
@@ -8,7 +8,7 @@ If you've ever bookmarked a component library, a shader tool, or a scroll-animat
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 [![Awesome](https://img.shields.io/badge/inspired%20by-awesome--lists-fc60a8.svg)](https://github.com/sindresorhus/awesome)
 
-### 🔗 [Browse the live site →](https://en970.github.io/ui-arsenal/)
+### 🔗 [Browse the live site →](https://en970.github.io/ui-vault/)
 
 Search, filter by category, click through — no build step, no signup.
 
