@@ -4,7 +4,7 @@
 
 If you've ever bookmarked a component library, a shader tool, or a scroll-animation repo and then lost track of it three tabs later — this is for you. Everything here was gathered, checked, and organized into one searchable page so you don't have to go digging again.
 
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0--1.0-lightgrey.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 [![Awesome](https://img.shields.io/badge/inspired%20by-awesome--lists-fc60a8.svg)](https://github.com/sindresorhus/awesome)
 
@@ -53,7 +53,7 @@ Pricing and licensing terms change. We did our best to verify everything at the 
 
 ## License
 
-The curation and code in this repo are released under [CC0 1.0](LICENSE) — public domain, no attribution needed. The linked resources each carry their own separate licenses; check those before using them commercially.
+The curation and code in this repo are released under the [MIT License](LICENSE). The linked resources each carry their own separate licenses; check those before using them commercially.
 
 ---
 
