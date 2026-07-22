@@ -16,7 +16,7 @@ Search, filter by category, click through — no build step, no signup.
 
 ## What's inside
 
-13 categories, 150+ resources, almost all free or open-source:
+15 categories, 190+ resources, almost all free or open-source:
 
 | Category | What you'll find |
 |---|---|
@@ -33,6 +33,8 @@ Search, filter by category, click through — no build step, no signup.
 | **Color & Typography Tools** | Palette generators, font pairing tools, and free display fonts |
 | **Cursor & Micro-interactions** | Custom cursors, magnetic buttons, and hover effects |
 | **Free Illustration Packs** | unDraw, Humaaans, Blush, and other illustration/avatar libraries |
+| **iOS Onboarding & Liquid Glass** | SwiftUI onboarding SDKs, Liquid Glass component libraries, Figma templates, and Apple's own WWDC25 Liquid Glass sample |
+| **Claude Skills for Onboarding & UI Design** | SKILL.md-based Claude Skills for retention-driven onboarding flows, Apple HIG-compliant UI, and premium design review |
 
 Each entry is tagged **Free**, **Freemium**, or **Mostly paid** — and there's a search bar at the top of the site so you don't have to scroll through everything to find what you need.
 
@@ -57,4 +59,4 @@ The curation and code in this repo are released under the [MIT License](LICENSE)
 
 ---
 
-<sub>topics: `ui-design` `ux-design` `design-resources` `awesome-list` `free-resources` `webgl` `threejs` `shadcn` `icons` `mockup` `framer` `css-animation` `open-source`</sub>
+<sub>topics: `ui-design` `ux-design` `design-resources` `awesome-list` `free-resources` `webgl` `threejs` `shadcn` `icons` `mockup` `framer` `css-animation` `open-source` `onboarding` `liquid-glass` `swiftui` `claude-skills`</sub>
