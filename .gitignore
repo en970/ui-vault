@@ -1,0 +1,25 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Secrets — never commit these to a public repo
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*.crt
+secrets.*
+credentials.*
+*.token
+
+# Dependencies / build (in case tooling is added later)
+node_modules/
+dist/
+build/

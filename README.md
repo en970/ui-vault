@@ -53,6 +53,26 @@ Keep it in the spirit of the list: free, cheap, or open-source, and something yo
 
 Pricing and licensing terms change. We did our best to verify everything at the time of writing, but always double-check on the source site before you build on top of something.
 
+## Security
+
+This is a static, fully self-contained page (all CSS/JS is inline, no external
+requests, no backend, no analytics, no cookies). Hardening in place:
+
+- A strict **Content-Security-Policy** meta tag: `default-src 'none'`, so no
+  remote scripts, styles, frames, or network connections can load; only inline
+  code and `data:` images are allowed.
+- Every outbound link uses `rel="noopener noreferrer nofollow"` and resource
+  URLs are runtime-sanitized to `http(s)`/`mailto` only, so a bad `url` value in
+  a pull request can't become a `javascript:` injection.
+- A `referrer` policy that avoids leaking full URLs cross-origin.
+
+Some protections can only be set as HTTP response headers, not via meta tags.
+If you host this behind a platform that supports custom headers (Cloudflare
+Pages, Netlify, a reverse proxy, etc.), also set:
+`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, and
+`Strict-Transport-Security: max-age=63072000; includeSubDomains`.
+GitHub Pages does not allow custom headers, but the in-page CSP still applies.
+
 ## License
 
 The curation and code in this repo are released under the [MIT License](LICENSE). The linked resources each carry their own separate licenses; check those before using them commercially.

@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Security hardening. The page is fully self-contained (inline CSS/JS,
+     data: favicon) and loads no external resources, so everything is locked
+     down: no remote scripts/styles/frames/connections, only same-origin +
+     data: images. Header-only protections (X-Frame-Options, X-Content-Type-
+     Options, HSTS) must be set at the host level — see README. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src 'self'; connect-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>UI Vault — Bold, Premium UI Resources</title>
 <meta name="description" content="190+ free or dirt-cheap resources for building bold, premium, three-dimensional interfaces: component libraries, scroll animation, shaders/WebGL, icons, app icon design, mockup videos, 3D models, color & typography tools, cursor effects, illustration packs, iOS Liquid Glass onboarding, and Claude Skills for design.">
 <meta name="theme-color" content="#0b0b0e">
@@ -365,7 +372,7 @@
 <main id="app"></main>
 <p class="empty" id="empty">No matching resources — clear the filter and try again.</p>
 
-<footer>Compiled through multi-agent research · pricing and license details can change, verify on the source site before use. <a href="https://github.com/en970/ui-vault" target="_blank" rel="noopener">View on GitHub</a></footer>
+<footer>Compiled through multi-agent research · pricing and license details can change, verify on the source site before use. <a href="https://github.com/en970/ui-vault" target="_blank" rel="noopener noreferrer">View on GitHub</a></footer>
 
 <script>
 const DATA = [
@@ -629,6 +636,16 @@ function escapeHtml(s) {
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
+// Allow only navigable web/mail schemes in hrefs — blocks javascript:, data:,
+// and other scheme-based injection if a resource entry ever carries a bad URL.
+function safeUrl(url) {
+  try {
+    const u = new URL(url, location.href);
+    if (u.protocol === "http:" || u.protocol === "https:" || u.protocol === "mailto:") return u.href;
+  } catch (e) { /* malformed URL */ }
+  return "#";
+}
+
 const app = document.getElementById("app");
 const chipsEl = document.getElementById("chips");
 let totalCount = 0, repoCount = 0;
@@ -658,7 +675,7 @@ DATA.forEach(cat => {
     card.dataset.text = (r.name + " " + r.description + " " + meta.title).toLowerCase();
     card.innerHTML = `
       <div class="card-top">
-        <h3><a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(r.name)} <span class="arrow">↗</span></a></h3>
+        <h3><a href="${escapeHtml(safeUrl(r.url))}" target="_blank" rel="noopener noreferrer nofollow">${escapeHtml(r.name)} <span class="arrow">↗</span></a></h3>
       </div>
       <div class="badges">
         <span class="badge ${t.cls}">${t.label}</span>
