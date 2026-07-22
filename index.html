@@ -297,6 +297,46 @@
   }
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 680px) {
+    .toolbar {
+      padding: .6rem 1rem;
+      gap: .55rem .6rem;
+      /* Hide-on-scroll-down, show-on-scroll-up */
+      transition: transform .28s ease;
+      will-change: transform;
+    }
+    .toolbar.nav-hidden { transform: translateY(-100%); }
+
+    .search { flex: 1 1 auto; max-width: none; order: 1; }
+    .result-count { order: 2; margin-left: auto; }
+
+    /* Chips become a single, edge-to-edge horizontal scroll strip
+       instead of wrapping into several tall rows */
+    .chips {
+      order: 3;
+      flex: 1 1 100%;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin: 0 -1rem -.15rem;
+      padding: 0 1rem .15rem;
+      scroll-padding-left: 1rem;
+    }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { flex: none; padding: .42rem .8rem; }
+
+    main { padding: 1.25rem 1rem 4rem; }
+    .grid { grid-template-columns: 1fr; gap: .7rem; }
+    section.category { scroll-margin-top: 1rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toolbar { transition: none; }
+    }
+  }
 </style>
 </head>
 <body>
@@ -668,6 +708,33 @@ function applyFilter() {
 }
 searchInput.addEventListener("input", applyFilter);
 applyFilter();
+
+/* Mobile: hide the sticky toolbar when scrolling down, reveal it when
+   scrolling back up — so the filters get out of the way while reading. */
+(function () {
+  const toolbar = document.querySelector(".toolbar");
+  const isMobile = () => window.matchMedia("(max-width: 680px)").matches;
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function onScroll() {
+    ticking = false;
+    if (!isMobile()) { toolbar.classList.remove("nav-hidden"); lastY = window.scrollY; return; }
+    const y = window.scrollY;
+    const delta = y - lastY;
+    if (Math.abs(delta) < 6) return;            // ignore jitter, keep accumulating
+    if (delta > 0 && y > toolbar.offsetHeight) {
+      toolbar.classList.add("nav-hidden");        // scrolling down → tuck away
+    } else {
+      toolbar.classList.remove("nav-hidden");     // scrolling up → bring back
+    }
+    lastY = y;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
