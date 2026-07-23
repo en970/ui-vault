@@ -10,17 +10,18 @@ If you've ever bookmarked a component library, a shader tool, or a scroll-animat
 
 ### 🔗 [Browse the live site →](https://en970.github.io/ui-vault/)
 
-Search, filter by category, click through — no build step, no signup.
+Search, filter by category/platform/pricing, click through — no build step, no signup.
 
 ---
 
 ## What's inside
 
-15 categories, 190+ resources, almost all free or open-source:
+16 categories, 280+ resources, almost all free or open-source:
 
 | Category | What you'll find |
 |---|---|
 | **Component Libraries** | shadcn/ui, Aceternity, Magic UI, Origin UI, and more copy-paste UI kits |
+| **Framework-Specific Components** | The Vue, Svelte, Angular, SolidJS, and framework-agnostic equivalents of the React-first libraries above |
 | **Scroll & Animation** | GSAP, Lenis, Framer Motion, and the libraries behind those buttery scroll effects |
 | **3D / Shader / WebGL** | shadergradient, Spline, react-three-fiber, Vanta.js, and raw shader tools |
 | **Icon Sets** | Lucide, Phosphor, Tabler, Heroicons — the usual (excellent) suspects |
@@ -36,7 +37,7 @@ Search, filter by category, click through — no build step, no signup.
 | **iOS Onboarding & Liquid Glass** | SwiftUI onboarding SDKs, Liquid Glass component libraries, Figma templates, and Apple's own WWDC25 Liquid Glass sample |
 | **Claude Skills for Onboarding & UI Design** | SKILL.md-based Claude Skills for retention-driven onboarding flows, Apple HIG-compliant UI, and premium design review |
 
-Each entry is tagged **Free**, **Freemium**, or **Mostly paid** — and there's a search bar at the top of the site so you don't have to scroll through everything to find what you need.
+Each entry is tagged **Free**, **Freemium**, or **Mostly paid**, and (where relevant) **Mobile**, **Desktop / Web**, or both — with a favicon so you recognize the site at a glance. Filter by category, platform, or pricing (they combine), search on top of that, or just clear everything with one click.
 
 ## Contributing
 
@@ -79,4 +80,4 @@ The curation and code in this repo are released under the [MIT License](LICENSE)
 
 ---
 
-<sub>topics: `ui-design` `ux-design` `design-resources` `awesome-list` `free-resources` `webgl` `threejs` `shadcn` `icons` `mockup` `framer` `css-animation` `open-source` `onboarding` `liquid-glass` `swiftui` `claude-skills`</sub>
+<sub>topics: `ui-design` `ux-design` `design-resources` `awesome-list` `free-resources` `webgl` `threejs` `shadcn` `icons` `mockup` `framer` `css-animation` `open-source` `onboarding` `liquid-glass` `swiftui` `claude-skills` `vue` `svelte` `angular` `solidjs`</sub>
