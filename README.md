@@ -16,24 +16,40 @@ Search, filter by category/platform/pricing, click through — no build step, no
 
 ## What's inside
 
-16 categories, 280+ resources, almost all free or open-source:
+32 categories, 1,180+ resources, almost all free or open-source:
 
 | Category | What you'll find |
 |---|---|
-| **Component Libraries** | shadcn/ui, Aceternity, Magic UI, Origin UI, and more copy-paste UI kits |
-| **Framework-Specific Components** | The Vue, Svelte, Angular, SolidJS, and framework-agnostic equivalents of the React-first libraries above |
-| **Scroll & Animation** | GSAP, Lenis, Framer Motion, and the libraries behind those buttery scroll effects |
+| **Component Libraries** | shadcn/ui, Aceternity, Magic UI, daisyUI, Radix, Headless UI, and more copy-paste UI kits |
+| **React UI Libraries** | Mantine, MUI, Chakra, Ant Design, HeroUI, React Aria, and the design systems behind GitHub, Adobe, and IBM |
+| **Framework-Specific Components** | The Vue, Svelte, Angular, SolidJS, and React Native equivalents of the React-first libraries above |
+| **CSS Frameworks & Methodologies** | Tailwind, UnoCSS, Bulma, Pico, classless resets, print stylesheets, and BEM/SMACSS/CUBE |
+| **HTML & CSS Templates** | HTML5Up, Cruip, Start Bootstrap, and free admin dashboard templates |
+| **Design Systems & Style Guides** | Material, Spectrum, Polaris, Carbon, Primer, Fluent, plus Laws of UX and Checklist Design |
+| **Scroll & Animation** | GSAP, Lenis, Motion, AOS, Swiper, three.js, and the libraries behind those buttery scroll effects |
+| **Cursor & Micro-interactions** | Custom cursors, hover effects, loaders, toasts, and CSS animation generators |
 | **3D / Shader / WebGL** | shadergradient, Spline, react-three-fiber, Vanta.js, and raw shader tools |
-| **Icon Sets** | Lucide, Phosphor, Tabler, Heroicons — the usual (excellent) suspects |
-| **App Icon Design** | Generators, Figma templates, and Apple's own Icon Composer tooling |
-| **Mockup & Promo Video Tools** | Turn a screen recording into an Apple-style product video |
-| **Design Inspiration Galleries** | Awwwards, Mobbin, Godly, Lapa Ninja, and other places to steal ideas from (respectfully) |
+| **Free 3D Models for Scroll Effects** | CC0 models and open-source scroll+3D boilerplates |
+| **Chart & Dataviz Libraries** | Chart.js, D3, ECharts, ApexCharts, Nivo, and animated data-story tools |
+| **Icon Sets** | Lucide, Phosphor, Tabler, Heroicons, Iconify, Simple Icons, and icon fonts |
+| **Logos & Brand Assets** | SVG brand logos, payment/browser logo sets, and free logo makers |
+| **App Icon Design** | Favicon generators, maskable PWA icons, and Apple's own Icon Composer tooling |
+| **Free Illustration Packs** | unDraw, Humaaans, Blush, avatars, vectors, and clip art |
+| **Backgrounds, Patterns & SVG Shapes** | Hero Patterns, blob/wave/mesh generators, and section dividers |
+| **Free UI Kits & Design Files** | Figma and Sketch freebies, daily UI files, and design-resource feeds |
+| **Free Stock Photos** | Unsplash, Pexels, Pixabay, CC0 archives, and placeholder image APIs |
+| **Free Stock Video & Audio** | Mixkit, Coverr, Freesound, and royalty-free music libraries |
+| **Color & Gradient Tools** | Palette generators, contrast checkers, gradient editors, and brand color references |
+| **Typography & Free Fonts** | Google Fonts, Fontshare, open foundries, pairing tools, and fluid-type calculators |
+| **Mockup & Promo Video Tools** | Turn a screen recording or screenshot into an Apple-style product visual |
+| **Online & Desktop Design Tools** | Figma, Penpot, Photopea, Excalidraw, Blender, Inkscape, and CSS generators |
+| **AI Design Tools** | Google Stitch, Leonardo, AI SVG generation, and AI charting |
+| **Image Compression & Optimization** | Squoosh, TinyPNG, SVGOMG, and privacy-first client-side compressors |
+| **Browser Extensions for Designers** | VisBug, PerfectPixel, WhatFont, ColorZilla, and contrast checkers |
+| **Developer Utilities & References** | CodePen, CSS-Tricks, caniuse, cheatsheets, and single-purpose web tools |
+| **Design Inspiration Galleries** | Awwwards, Mobbin, Godly, Landingfolio, and other places to steal ideas from (respectfully) |
 | **Free Framer Templates** | 3D scroll animations and bold templates from the Framer marketplace |
 | **Open-Source GitHub Repos** | Awesome-lists and source code worth starring |
-| **Free 3D Models for Scroll Effects** | CC0 models and open-source scroll+3D boilerplates |
-| **Color & Typography Tools** | Palette generators, font pairing tools, and free display fonts |
-| **Cursor & Micro-interactions** | Custom cursors, magnetic buttons, and hover effects |
-| **Free Illustration Packs** | unDraw, Humaaans, Blush, and other illustration/avatar libraries |
 | **iOS Onboarding & Liquid Glass** | SwiftUI onboarding SDKs, Liquid Glass component libraries, Figma templates, and Apple's own WWDC25 Liquid Glass sample |
 | **Claude Skills for Onboarding & UI Design** | SKILL.md-based Claude Skills for retention-driven onboarding flows, Apple HIG-compliant UI, and premium design review |
 
