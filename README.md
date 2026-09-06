@@ -16,7 +16,7 @@ Search, filter by category/platform/pricing, click through — no build step, no
 
 ## What's inside
 
-32 categories, 1,180+ resources, almost all free or open-source:
+32 categories, 1,169+ resources, almost all free or open-source:
 
 | Category | What you'll find |
 |---|---|
